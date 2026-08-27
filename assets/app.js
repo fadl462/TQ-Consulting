@@ -106,4 +106,48 @@
   // Add active state to the current page link
   qsa('.links a,.menuPanel a').forEach(a=>{const href=a.getAttribute('href');if(href && !href.startsWith('http') && !href.startsWith('#')){const current=location.pathname.split('/').pop()||'index.html';if(href.split('#')[0]===current)a.classList.add('active');}});
 
+
+  // V8 interactive capability architecture
+  const capabilities=[
+    {name:'Consulting',title:'Turn complexity into direction.',text:'Results-driven management consulting across innovation, leadership, HR, sustainability and organisational transformation.',href:'solutions.html',meta:['Strategy','Transformation','Performance']},
+    {name:'Learning',title:'Build capability that travels.',text:'Research-based learning experiences for leaders and workforces, delivered through workshops, public courses and tailored programmes.',href:'learning.html',meta:['Leadership','Workforce','Development']},
+    {name:'Coaching',title:'Unlock potential through practice.',text:'Professional coaching grounded in best practice, designed to strengthen performance, self-awareness and career growth.',href:'solutions.html#coaching',meta:['Executive','Performance','Growth']},
+    {name:'Learning Technology',title:'Make learning more immersive.',text:'LMS, e-learning, mobile learning, VR/AR, simulations, gamification and emerging digital learning experiences.',href:'solutions.html#technology',meta:['Digital','Immersive','Scale']}
+  ];
+  const capTabs=qsa('.cap-tab');
+  if(capTabs.length){
+    const capTitle=qs('#capTitle'),capText=qs('#capText'),capPill=qs('#capPill'),capLink=qs('#capLink'),capCount=qs('#archCount'),capType=qs('#archType'),capIndex=qs('#capIndex');
+    const metaEls=[qs('#capMeta1'),qs('#capMeta2'),qs('#capMeta3')];
+    let active=0;
+    const activateCap=(i)=>{
+      active=i; const c=capabilities[i];
+      capTabs.forEach((t,n)=>{t.classList.toggle('active',n===i);t.setAttribute('aria-selected',String(n===i));});
+      [capTitle,capText,capPill,capLink,capCount,capType,capIndex].forEach(el=>el?.animate([{opacity:.15,transform:'translateY(8px)'},{opacity:1,transform:'translateY(0)'}],{duration:420,easing:'cubic-bezier(.16,1,.3,1)'}));
+      if(capTitle)capTitle.textContent=c.title;if(capText)capText.textContent=c.text;if(capPill)capPill.textContent=c.name;if(capLink){capLink.href=c.href;capLink.innerHTML=`Explore ${c.name.toLowerCase()} <span>↗</span>`;}if(capCount)capCount.textContent=`0${i+1}`;if(capType)capType.textContent=c.name;if(capIndex)capIndex.textContent=`0${i+1}`;metaEls.forEach((el,n)=>{if(el)el.textContent=c.meta[n]});
+    };
+    capTabs.forEach((t,i)=>t.addEventListener('click',()=>activateCap(i)));
+    let capTimer=reduce?null:setInterval(()=>activateCap((active+1)%capabilities.length),7000);
+    capTabs.forEach(t=>t.addEventListener('mouseenter',()=>{if(capTimer){clearInterval(capTimer);capTimer=null}}));
+    qs('.cap-tabs')?.addEventListener('mouseleave',()=>{if(!reduce&&!capTimer)capTimer=setInterval(()=>activateCap((active+1)%capabilities.length),7000)});
+  }
+
+  // V8 interactive Mental Toughness dimensions
+  const mentalData=[
+    {name:'Performance',letter:'P',title:'Turn pressure into productive performance.',text:'Mental toughness is linked to meaningful variation in individual performance and how people approach demanding situations.'},
+    {name:'Wellbeing',letter:'W',title:'Build steadier responses to pressure.',text:'A stronger mindset can support contentment, resilience and healthier ways of managing stress and uncertainty.'},
+    {name:'Agility',letter:'A',title:'Respond positively when conditions change.',text:'Develop more constructive responses to uncertainty, disruption and the changing demands of work.'},
+    {name:'Aspiration',letter:'A',title:'Raise ambition without losing perspective.',text:'Encourage purposeful ambition and greater readiness to take considered risks in pursuit of meaningful goals.'}
+  ];
+  const mTabs=qsa('.mental-tab');
+  if(mTabs.length){
+    const mIndex=qs('#mentalIndex'),mWord=qs('#mentalWord'),mLetter=qs('#mentalLetter'),mPill=qs('#mentalPill'),mTitle=qs('#mentalTitle'),mText=qs('#mentalText');
+    let mi=0;
+    const activateMental=(i)=>{mi=i;const d=mentalData[i];mTabs.forEach((t,n)=>t.classList.toggle('active',n===i));[mIndex,mWord,mLetter,mPill,mTitle,mText].forEach(el=>el?.animate([{opacity:.15,transform:'translateY(8px)'},{opacity:1,transform:'translateY(0)'}],{duration:400,easing:'cubic-bezier(.16,1,.3,1)'}));if(mIndex)mIndex.textContent=`0${i+1}`;if(mWord)mWord.textContent=d.name;if(mLetter)mLetter.textContent=d.letter;if(mPill)mPill.textContent=d.name;if(mTitle)mTitle.textContent=d.title;if(mText)mText.textContent=d.text;};
+    mTabs.forEach((t,i)=>t.addEventListener('click',()=>activateMental(i)));
+  }
+
+  // Hide/reveal navigation on scroll for a more app-like browsing feel
+  let lastScroll=scrollY;
+  addEventListener('scroll',()=>{if(!nav||innerWidth<700)return;const y=scrollY;if(y>140&&y>lastScroll+5)nav.classList.add('nav-hidden');else if(y<lastScroll-5)nav.classList.remove('nav-hidden');lastScroll=y},{passive:true});
+
 })();
