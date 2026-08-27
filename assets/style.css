@@ -773,3 +773,34 @@ main>section:not(:first-child):before{content:"";position:absolute;left:0;top:-1
 @media (min-width:1001px){
   .solutions-page .section-nav,.solutions-page .side-nav,.solutions-page .page-dots{z-index:70;}
 }
+
+/* V19 signature refinements */
+.solutions-page .sol-architecture{position:relative;overflow:hidden}
+.solutions-page .sol-architecture:before{content:'';position:absolute;width:520px;height:520px;border:1px solid rgba(7,28,47,.055);border-radius:50%;right:-250px;top:120px;pointer-events:none}
+.solutions-page .sol-architecture .section-head,.solutions-page .cap-layout{position:relative;z-index:2}
+.solutions-page .cap-tabs{position:relative}
+.solutions-page .cap-tabs:before{content:'';position:absolute;left:18px;top:18px;bottom:18px;width:1px;background:linear-gradient(to bottom,rgba(229,43,63,.55),rgba(7,28,47,.06));opacity:.55;pointer-events:none}
+.solutions-page .cap-tab{position:relative;overflow:hidden;isolation:isolate;padding-left:24px}
+.solutions-page .cap-tab:before{content:'';position:absolute;inset:0;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(229,43,63,.12),transparent 48%);opacity:0;transition:opacity .35s;z-index:-1}
+.solutions-page .cap-tab:hover:before,.solutions-page .cap-tab.active:before{opacity:1}
+.solutions-page .cap-tab span{transition:transform .45s cubic-bezier(.16,1,.3,1),color .35s}
+.solutions-page .cap-tab:hover span{transform:translateX(3px)}
+.solutions-page .cap-tab.active span{transform:translateX(5px)}
+.solutions-page .cap-stage{box-shadow:0 28px 90px rgba(7,28,47,.14);transform:translateZ(0);transition:box-shadow .5s,transform .5s}
+.solutions-page .cap-stage:hover{transform:translateY(-4px);box-shadow:0 38px 110px rgba(7,28,47,.18)}
+.solutions-page .cap-stage-content>*{will-change:transform,opacity}
+.solutions-page .cap-stage:after{content:'';position:absolute;inset:auto 0 0;height:3px;background:linear-gradient(90deg,var(--red) var(--cap-progress,25%),rgba(255,255,255,.08) var(--cap-progress,25%));z-index:6;transition:background .5s}
+.solutions-page .cap-stage-top span:last-child{padding:6px 9px;border:1px solid rgba(255,255,255,.15);border-radius:999px}
+.solutions-page .cap-tags span{transition:background .3s,border-color .3s,transform .3s}
+.solutions-page .cap-tags span:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.35);transform:translateY(-2px)}
+.solutions-page .tech-item{transition:padding .4s,background .4s}
+.solutions-page .tech-item.active{background:linear-gradient(90deg,rgba(255,255,255,.025),transparent)}
+.solutions-page .tech-item i{transition:transform .35s}
+.solutions-page .tech-item:hover i,.solutions-page .tech-item.active i{transform:translate(3px,-3px)}
+.solutions-page .outcome-grid article{transition:transform .55s cubic-bezier(.16,1,.3,1),box-shadow .55s,border-color .35s}
+.solutions-page .outcome-grid article:hover{border-color:rgba(7,28,47,.18)}
+.solutions-page .sol-cta-card{transition:transform .55s cubic-bezier(.16,1,.3,1),box-shadow .55s}
+.solutions-page .sol-cta-card:hover{transform:translateY(-7px);box-shadow:0 35px 90px rgba(7,28,47,.13)}
+@media (min-width:1001px){.solutions-page .sol-architecture .section-head{grid-template-columns:1.12fr .88fr;gap:72px}.solutions-page .cap-layout{grid-template-columns:minmax(0,.52fr) minmax(0,1.48fr);gap:16px}.solutions-page .cap-tab{min-height:132px}.solutions-page .cap-stage{min-height:430px}}
+@media (max-width:1000px){.solutions-page .cap-tabs:before{display:none}}
+@media (max-width:650px){.solutions-page .cap-stage:hover{transform:none}.solutions-page .cap-tab{padding-left:17px}}
