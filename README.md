@@ -1,6 +1,5 @@
-# TQ Consulting — V13
+# TQ Consulting — V14 Hero Collision Fix
 
-Premium interaction build with a hero floating-panel collision fix.
+Fixed the floating hero metric panels on the homepage and About page so they no longer cover the primary editorial copy.
 
-## V13 change
-The floating “Growth engines” panel on the homepage and About page has been repositioned into a dedicated safe zone within the hero visual so it no longer obscures the large editorial headline/body copy. Responsive positions are provided for desktop, tablet and phone widths.
+The panels remain animated and responsive, but are positioned in dedicated clear zones across desktop, tablet and mobile breakpoints.

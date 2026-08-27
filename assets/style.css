@@ -545,3 +545,19 @@ main>section:not(:first-child):before{content:"";position:absolute;left:0;top:-1
   .visual .float1{left:12px;top:92px;width:158px}
   .visual .float2{right:12px;top:16px;width:150px}
 }
+
+/* V14 hero collision fix: floating metric cards stay clear of editorial copy. */
+.float1{left:28px;right:auto;top:170px;bottom:auto;}
+.chip-one{left:28px;right:auto;top:155px;bottom:auto;}
+@media(max-width:1000px){
+  .float1{left:28px;top:150px;bottom:auto;}
+  .chip-one{left:28px;top:145px;bottom:auto;}
+}
+@media(max-width:650px){
+  .float1{left:16px;top:155px;width:175px;bottom:auto;}
+  .chip-one{left:16px;top:135px;width:165px;bottom:auto;}
+}
+@media(max-width:420px){
+  .float1{left:12px;top:145px;width:155px;}
+  .chip-one{left:12px;top:128px;width:150px;}
+}
