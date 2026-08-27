@@ -91,4 +91,55 @@
 
   // Smooth page transition on internal links
   if(!reduce){qsa('a[href]').forEach(a=>{const url=a.getAttribute('href');if(!url||url.startsWith('#')||url.startsWith('http')||url.startsWith('mailto:')||a.target==='_blank')return;a.addEventListener('click',e=>{if(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;e.preventDefault();document.body.style.transition='opacity .22s ease';document.body.style.opacity='.35';setTimeout(()=>location.href=url,180)})})}
+
+  // Premium UI layer: active navigation, pointer depth, smart header and section ambience
+  const internalLinks=qsa('.links a');
+  const path=location.pathname.split('/').pop() || 'index.html';
+  internalLinks.forEach(a=>{
+    const href=(a.getAttribute('href')||'').split('#')[0];
+    if(href===path || (path==='' && href==='index.html')) a.classList.add('active');
+  });
+
+  // Hide/reveal header while scrolling, keeping it visible at the top and on upward movement.
+  let lastY=scrollY;
+  const updateHeader=()=>{
+    if(!nav || innerWidth<700) return;
+    const y=scrollY;
+    if(y>180 && y>lastY+8) nav.style.transform='translateY(-110%)';
+    else nav.style.transform='translateY(0)';
+    lastY=y;
+  };
+  addEventListener('scroll',updateHeader,{passive:true});
+
+  // Add a subtle progress state to long sections.
+  if(!reduce){
+    const sectionProgress=()=>qsa('section').forEach(sec=>{
+      const r=sec.getBoundingClientRect();
+      const p=Math.max(0,Math.min(1,(innerHeight-r.top)/(innerHeight+r.height)));
+      sec.style.setProperty('--section-progress',p.toFixed(3));
+    });
+    addEventListener('scroll',sectionProgress,{passive:true}); sectionProgress();
+  }
+
+  // Keyboard-friendly mobile menu focus behaviour.
+  if(menu&&panel){
+    menu.addEventListener('click',()=>{
+      if(panel.classList.contains('open')) panel.querySelector('a')?.focus();
+    });
+  }
+
+  // Soft pointer depth on visual panels, limited to capable desktops.
+  if(!reduce && matchMedia('(hover:hover) and (pointer:fine)').matches){
+    qsa('.visual-main,.program,.productvisual').forEach(el=>{
+      let frame;
+      el.addEventListener('pointermove',e=>{
+        const r=el.getBoundingClientRect();
+        const x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
+        cancelAnimationFrame(frame);
+        frame=requestAnimationFrame(()=>el.style.setProperty('--mx',`${(x+.5)*100}%`));
+        el.style.setProperty('--my',`${(y+.5)*100}%`);
+      },{passive:true});
+    });
+  }
+
 })();

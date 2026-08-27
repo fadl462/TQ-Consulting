@@ -1,7 +1,18 @@
-# TQ Consulting — World-Class Website v2
+# TQ Consulting — Premium UI/UX Edition
 
-Static multi-page redesign grounded in content and product information from the current TQ Consulting website.
+This edition enhances the existing TQ Consulting multi-page site with a more refined premium interface and interaction system.
 
-Pages: Home, Solutions, Learning, Certifications, Store, About, Insights, Contact.
+## Included
+- Refined glass navigation and active-page states
+- More expressive hero composition and animated typography
+- Ambient grid/orbit motion
+- Scroll progress and section marker choreography
+- Enhanced hover depth and card interactions
+- Premium CTA micro-interactions
+- Improved form focus states
+- More polished content hierarchy and spacing
+- Responsive refinements for tablet and phone
+- Reduced-motion accessibility fallback
+- Existing TQ Consulting logo assets retained
 
-Run locally with any static server, e.g. `python -m http.server 8000`.
+Pages: Home, Solutions, Learning, Certifications, Store, Insights, About, Contact.
