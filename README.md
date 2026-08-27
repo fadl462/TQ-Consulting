@@ -1,18 +1,26 @@
-# TQ Consulting — Premium UI/UX Edition
+# TQ Consulting — V7 Premium UI/UX Enhancement
 
-This edition enhances the existing TQ Consulting multi-page site with a more refined premium interface and interaction system.
+A refined, responsive multi-page TQ Consulting website with a premium editorial visual system, stronger information hierarchy, interactive cards, refined motion, section navigation, responsive behaviour and the supplied TQ logo assets.
 
-## Included
-- Refined glass navigation and active-page states
-- More expressive hero composition and animated typography
-- Ambient grid/orbit motion
-- Scroll progress and section marker choreography
-- Enhanced hover depth and card interactions
-- Premium CTA micro-interactions
+## Pages
+- index.html
+- solutions.html
+- learning.html
+- certifications.html
+- store.html
+- insights.html
+- about.html
+- contact.html
+
+## Key enhancements
+- Premium glass navigation and active page states
+- Stronger typography hierarchy and editorial spacing
+- Layered hero visual treatment and ambient orbital motion
+- Interactive card lighting and depth
+- Refined CTAs and micro-interactions
+- Scroll progress and desktop section navigator
 - Improved form focus states
-- More polished content hierarchy and spacing
-- Responsive refinements for tablet and phone
+- Enhanced dark sections and accreditation presentation
+- Responsive phone/tablet refinements
 - Reduced-motion accessibility fallback
-- Existing TQ Consulting logo assets retained
-
-Pages: Home, Solutions, Learning, Certifications, Store, Insights, About, Contact.
+- Supplied TQ primary and inverse logo assets retained

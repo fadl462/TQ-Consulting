@@ -42,7 +42,7 @@
   const h1=qs('.hero h1');
   if(h1 && !reduce && !h1.dataset.motionSplit){
     h1.dataset.motionSplit='1'; const walker=document.createTreeWalker(h1,NodeFilter.SHOW_TEXT); const nodes=[]; while(walker.nextNode())nodes.push(walker.currentNode);
-    nodes.forEach(node=>{const frag=document.createDocumentFragment();node.textContent.split(/(\s+)/).forEach(part=>{if(/^\s+$/.test(part))frag.appendChild(document.createTextNode(part)); else {const w=document.createElement('span');w.className='word';const inner=document.createElement('span');inner.textContent=part;w.appendChild(inner);frag.appendChild(w)}});node.parentNode.replaceChild(frag,node)});
+    nodes.forEach(node=>{const frag=document.createDocumentFragment();let wi=0;node.textContent.split(/(\s+)/).forEach(part=>{if(/^\s+$/.test(part))frag.appendChild(document.createTextNode(part)); else {const w=document.createElement('span');w.className='word';w.style.setProperty('--word-index',wi++);const inner=document.createElement('span');inner.textContent=part;w.appendChild(inner);frag.appendChild(w)}});node.parentNode.replaceChild(frag,node)});
   }
 
   // Gentle parallax on hero visual and marked elements
@@ -91,55 +91,19 @@
 
   // Smooth page transition on internal links
   if(!reduce){qsa('a[href]').forEach(a=>{const url=a.getAttribute('href');if(!url||url.startsWith('#')||url.startsWith('http')||url.startsWith('mailto:')||a.target==='_blank')return;a.addEventListener('click',e=>{if(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;e.preventDefault();document.body.style.transition='opacity .22s ease';document.body.style.opacity='.35';setTimeout(()=>location.href=url,180)})})}
-
-  // Premium UI layer: active navigation, pointer depth, smart header and section ambience
-  const internalLinks=qsa('.links a');
-  const path=location.pathname.split('/').pop() || 'index.html';
-  internalLinks.forEach(a=>{
-    const href=(a.getAttribute('href')||'').split('#')[0];
-    if(href===path || (path==='' && href==='index.html')) a.classList.add('active');
-  });
-
-  // Hide/reveal header while scrolling, keeping it visible at the top and on upward movement.
-  let lastY=scrollY;
-  const updateHeader=()=>{
-    if(!nav || innerWidth<700) return;
-    const y=scrollY;
-    if(y>180 && y>lastY+8) nav.style.transform='translateY(-110%)';
-    else nav.style.transform='translateY(0)';
-    lastY=y;
-  };
-  addEventListener('scroll',updateHeader,{passive:true});
-
-  // Add a subtle progress state to long sections.
-  if(!reduce){
-    const sectionProgress=()=>qsa('section').forEach(sec=>{
-      const r=sec.getBoundingClientRect();
-      const p=Math.max(0,Math.min(1,(innerHeight-r.top)/(innerHeight+r.height)));
-      sec.style.setProperty('--section-progress',p.toFixed(3));
-    });
-    addEventListener('scroll',sectionProgress,{passive:true}); sectionProgress();
+  // Premium section navigator on desktop
+  if(!reduce && innerWidth > 1100){
+    const sections=qsa('main > section');
+    if(sections.length>2){
+      const rail=document.createElement('nav'); rail.className='section-rail'; rail.setAttribute('aria-label','Page sections');
+      sections.forEach((sec,i)=>{const a=document.createElement('a');a.href=`#section-${i+1}`;a.dataset.index=i;const dot=document.createElement('span');dot.className='rail-dot';const label=document.createElement('span');label.className='rail-label';label.textContent=sec.querySelector('.eyebrow')?.textContent?.split('—')[1]?.trim()||`Section ${i+1}`;a.append(dot,label);sec.id=`section-${i+1}`;rail.append(a);});
+      document.body.append(rail);
+      const railLinks=qsa('.section-rail a');
+      const roi=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){railLinks.forEach(a=>a.classList.toggle('active',a.dataset.index===String(sections.indexOf(e.target))))}}),{threshold:.3});sections.forEach(s=>roi.observe(s));
+    }
   }
 
-  // Keyboard-friendly mobile menu focus behaviour.
-  if(menu&&panel){
-    menu.addEventListener('click',()=>{
-      if(panel.classList.contains('open')) panel.querySelector('a')?.focus();
-    });
-  }
-
-  // Soft pointer depth on visual panels, limited to capable desktops.
-  if(!reduce && matchMedia('(hover:hover) and (pointer:fine)').matches){
-    qsa('.visual-main,.program,.productvisual').forEach(el=>{
-      let frame;
-      el.addEventListener('pointermove',e=>{
-        const r=el.getBoundingClientRect();
-        const x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
-        cancelAnimationFrame(frame);
-        frame=requestAnimationFrame(()=>el.style.setProperty('--mx',`${(x+.5)*100}%`));
-        el.style.setProperty('--my',`${(y+.5)*100}%`);
-      },{passive:true});
-    });
-  }
+  // Add active state to the current page link
+  qsa('.links a,.menuPanel a').forEach(a=>{const href=a.getAttribute('href');if(href && !href.startsWith('http') && !href.startsWith('#')){const current=location.pathname.split('/').pop()||'index.html';if(href.split('#')[0]===current)a.classList.add('active');}});
 
 })();
