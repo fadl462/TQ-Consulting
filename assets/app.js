@@ -184,3 +184,29 @@
     });
   }
 })();
+
+/* ===== V15 Solutions interactions ===== */
+(function(){
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const q=(s,c=document)=>c.querySelector(s), qa=(s,c=document)=>[...c.querySelectorAll(s)];
+  const caps=[
+    {type:'CONSULTING',num:'01',title:'Turn complexity into direction.',text:'Results-driven management consulting across innovation, leadership, HR, sustainability and organisational transformation.',tags:['Strategy','Transformation','Performance'],href:'contact.html',label:'Explore consulting ↗'},
+    {type:'LEARNING',num:'02',title:'Build capability that travels.',text:'Research-based learning experiences for leaders and workforces, delivered through workshops, public courses and tailored programmes.',tags:['Leadership','Workforce','Development'],href:'learning.html',label:'Explore learning ↗'},
+    {type:'COACHING',num:'03',title:'Unlock potential through practice.',text:'Professional coaching grounded in best practice, designed to strengthen performance, self-awareness and career growth.',tags:['Executive','Performance','Growth'],href:'contact.html',label:'Explore coaching ↗'},
+    {type:'LEARNING TECHNOLOGY',num:'04',title:'Make learning more immersive.',text:'LMS, e-learning, mobile learning, VR/AR, simulations, gamification and emerging digital learning experiences.',tags:['Digital','Immersive','Scale'],href:'contact.html',label:'Design a solution ↗'}
+  ];
+  const tabs=qa('.cap-tab');
+  if(tabs.length){
+    const els={idx:q('#capStageIndex'),type:q('#capStageType'),num:q('#capStageNum'),title:q('#capStageTitle'),text:q('#capStageText'),t1:q('#capTag1'),t2:q('#capTag2'),t3:q('#capTag3'),link:q('#capStageLink')};
+    let active=0,timer=null;
+    const paint=(i)=>{active=i;const c=caps[i];tabs.forEach((t,n)=>t.classList.toggle('active',n===i));Object.entries(els).forEach(([k,e])=>{if(!e)return;e.animate([{opacity:.15,transform:'translateY(10px)'},{opacity:1,transform:'none'}],{duration:380,easing:'cubic-bezier(.16,1,.3,1)'});});els.idx.textContent=c.num;els.type.textContent=c.type;els.num.textContent=c.num;els.title.textContent=c.title;els.text.textContent=c.text;els.t1.textContent=c.tags[0];els.t2.textContent=c.tags[1];els.t3.textContent=c.tags[2];els.link.href=c.href;els.link.textContent=c.label;};
+    tabs.forEach((t,i)=>t.addEventListener('click',()=>paint(i)));
+    if(!reduce){timer=setInterval(()=>paint((active+1)%caps.length),6000);q('.cap-tabs')?.addEventListener('mouseenter',()=>{if(timer){clearInterval(timer);timer=null}});q('.cap-tabs')?.addEventListener('mouseleave',()=>{if(!timer)timer=setInterval(()=>paint((active+1)%caps.length),6000)});}
+  }
+  qa('.tech-item').forEach(item=>item.addEventListener('click',()=>{qa('.tech-item').forEach(x=>x.classList.remove('active'));item.classList.add('active')}));
+  if(!reduce && matchMedia('(hover:hover) and (pointer:fine)').matches){
+    const hero=q('.sol-visual');const visual=q('.sol-visual-main');
+    hero?.addEventListener('pointermove',e=>{const r=hero.getBoundingClientRect();const x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;visual.style.transform=`rotate(${1.2+x*1.5}deg) translate(${x*5}px,${y*4}px)`});
+    hero?.addEventListener('pointerleave',()=>visual.style.transform='rotate(1.2deg)');
+  }
+})();

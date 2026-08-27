@@ -1,5 +1,4 @@
-# TQ Consulting — V14 Hero Collision Fix
+TQ Consulting V15 — Solutions Experience
 
-Fixed the floating hero metric panels on the homepage and About page so they no longer cover the primary editorial copy.
-
-The panels remain animated and responsive, but are positioned in dedicated clear zones across desktop, tablet and mobile breakpoints.
+Premium interactive redesign of the Solutions page, built on the TQ V14 master.
+Highlights: interactive capability architecture, animated solution visual, learning technology accordion, outcome architecture, premium CTA, responsive tablet/mobile layouts, reduced-motion support.
