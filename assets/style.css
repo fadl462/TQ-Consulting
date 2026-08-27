@@ -804,3 +804,90 @@ main>section:not(:first-child):before{content:"";position:absolute;left:0;top:-1
 @media (min-width:1001px){.solutions-page .sol-architecture .section-head{grid-template-columns:1.12fr .88fr;gap:72px}.solutions-page .cap-layout{grid-template-columns:minmax(0,.52fr) minmax(0,1.48fr);gap:16px}.solutions-page .cap-tab{min-height:132px}.solutions-page .cap-stage{min-height:430px}}
 @media (max-width:1000px){.solutions-page .cap-tabs:before{display:none}}
 @media (max-width:650px){.solutions-page .cap-stage:hover{transform:none}.solutions-page .cap-tab{padding-left:17px}}
+
+/* =========================================================
+   V20 — SOLUTIONS ALIGNMENT / OVERLAP CONTROL
+   Purpose: eliminate visual collisions at every breakpoint,
+   especially the pointer glow and capability architecture.
+   ========================================================= */
+.solutions-page{overflow-x:hidden}
+.solutions-page main{position:relative;z-index:1}
+.solutions-page .sol-hero-grid,
+.solutions-page .sol-architecture .wrap,
+.solutions-page .sol-technology .wrap,
+.solutions-page .sol-outcomes .wrap,
+.solutions-page .sol-cta .wrap{position:relative;z-index:2}
+
+/* Keep the cursor atmosphere decorative and behind all readable content. */
+.solutions-page .v12-cursor-glow{z-index:-1!important;width:280px;height:280px;opacity:.55!important}
+
+/* Architecture: make the selector and stage occupy clearly separated columns. */
+@media (min-width:1001px){
+  .solutions-page .cap-layout{
+    grid-template-columns:minmax(250px,.56fr) minmax(0,1.44fr)!important;
+    gap:24px!important;
+    align-items:stretch!important;
+  }
+  .solutions-page .cap-tabs{min-width:0;gap:12px!important}
+  .solutions-page .cap-tab{
+    min-width:0;
+    width:100%;
+    box-sizing:border-box;
+    transform:none!important;
+  }
+  .solutions-page .cap-stage{
+    min-width:0;
+    width:100%;
+    box-sizing:border-box;
+    overflow:hidden;
+  }
+  .solutions-page .cap-stage-content{min-width:0}
+  .solutions-page .cap-stage h3,
+  .solutions-page .cap-stage p{overflow-wrap:anywhere}
+}
+
+/* Remove decorative guide line where it can visually cross tab content. */
+@media (min-width:1001px){
+  .solutions-page .cap-tabs:before{left:8px;top:12px;bottom:12px;opacity:.22}
+}
+
+/* Hero chips must remain inside the visual and never cross the text column. */
+@media (min-width:1001px){
+  .solutions-page .sol-visual{overflow:visible;min-width:0}
+  .solutions-page .sol-visual-main{right:0}
+  .solutions-page .chip-a{right:8px}
+  .solutions-page .chip-b{left:8px}
+  .solutions-page .chip-c{right:18px}
+}
+
+/* Tablet: prevent the visual and text from competing for the same vertical space. */
+@media (min-width:651px) and (max-width:1000px){
+  .solutions-page .sol-hero-grid{gap:36px}
+  .solutions-page .sol-visual{height:500px;min-height:500px}
+  .solutions-page .cap-layout{gap:20px}
+  .solutions-page .cap-tabs{gap:10px}
+  .solutions-page .cap-stage{min-height:430px}
+}
+
+/* Phone: stack architecture cleanly and keep every floating element clipped to its stage. */
+@media (max-width:650px){
+  .solutions-page .sol-visual{overflow:hidden;height:410px;min-height:410px}
+  .solutions-page .sol-visual-main{overflow:hidden}
+  .solutions-page .sv-chip{max-width:150px}
+  .solutions-page .cap-layout{display:flex;flex-direction:column;gap:16px}
+  .solutions-page .cap-tabs{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+  .solutions-page .cap-tab{min-height:96px;width:100%;transform:none!important}
+  .solutions-page .cap-stage{width:100%;min-height:390px}
+  .solutions-page .cap-stage-content{max-width:none}
+  .solutions-page .cap-stage h3{max-width:100%}
+  .solutions-page .cap-stage p{max-width:100%}
+  .solutions-page .v12-cursor-glow{display:none!important}
+}
+@media (max-width:420px){
+  .solutions-page .cap-tabs{grid-template-columns:1fr}
+  .solutions-page .cap-tab{min-height:82px}
+  .solutions-page .cap-stage{min-height:365px}
+}
+
+/* Never allow reveal animations to create horizontal overflow. */
+.solutions-page .v12-reveal{max-width:100%}
