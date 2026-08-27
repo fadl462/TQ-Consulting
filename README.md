@@ -1,3 +1,6 @@
-# TQ Consulting — V12 Premium Interaction
+# TQ Consulting — V13
 
-V12 builds on the V11 experience with a more refined premium interaction layer: deliberate scroll reveals, subtle cursor ambience, richer hover states, capability-card lighting, stronger section transitions, interactive accreditation tiles, and improved CTA depth. Existing TQ branding and responsive behaviour are preserved.
+Premium interaction build with a hero floating-panel collision fix.
+
+## V13 change
+The floating “Growth engines” panel on the homepage and About page has been repositioned into a dedicated safe zone within the hero visual so it no longer obscures the large editorial headline/body copy. Responsive positions are provided for desktop, tablet and phone widths.
