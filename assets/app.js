@@ -151,3 +151,36 @@
   addEventListener('scroll',()=>{if(!nav||innerWidth<700)return;const y=scrollY;if(y>140&&y>lastScroll+5)nav.classList.add('nav-hidden');else if(y<lastScroll-5)nav.classList.remove('nav-hidden');lastScroll=y},{passive:true});
 
 })();
+
+/* V12 premium interaction layer */
+(function(){
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const q=(s,c=document)=>c.querySelector(s), qa=(s,c=document)=>[...c.querySelectorAll(s)];
+  if(!reduce){
+    // Cursor atmosphere: subtle, never a primary interaction.
+    const glow=document.createElement('div'); glow.className='v12-cursor-glow'; document.body.append(glow);
+    let gx=0,gy=0,tx=0,ty=0;
+    addEventListener('pointermove',e=>{tx=e.clientX;ty=e.clientY},{passive:true});
+    const move=()=>{gx+=(tx-gx)*.12;gy+=(ty-gy)*.12;glow.style.left=gx+'px';glow.style.top=gy+'px';requestAnimationFrame(move)};move();
+
+    // Viewport-driven reveal with deliberate stagger.
+    const revealables=qa('main section .section-kicker, main section h1, main section h2, main section .lead, main section .about-art-shell, main section .story-stat, main section .engine-card, main section .principle-stack article, main section .logoBox, main section .cta-card');
+    revealables.forEach((el,i)=>{if(!el.classList.contains('reveal')&&!el.classList.contains('v12-reveal')){el.classList.add('v12-reveal');el.dataset.v12Delay=String((i%5)+1)}});
+    const rio=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('is-visible');rio.unobserve(e.target)}}),{threshold:.08,rootMargin:'0px 0px -8% 0px'});
+    revealables.forEach(el=>rio.observe(el));
+
+    // Magnetic-ish nav links, kept restrained.
+    if(matchMedia('(hover:hover) and (pointer:fine)').matches){
+      qa('.links a').forEach(a=>a.addEventListener('pointermove',e=>{const r=a.getBoundingClientRect();const x=(e.clientX-r.left-r.width/2)*.035;const y=(e.clientY-r.top-r.height/2)*.08;a.style.transform=`translate(${x}px,${y}px)`}));
+      qa('.links a').forEach(a=>a.addEventListener('pointerleave',()=>a.style.transform=''));
+    }
+
+    // About page: gently connect the four growth engines with a live active state.
+    const engineCards=qa('.engine-card');
+    engineCards.forEach((card,i)=>{
+      card.addEventListener('pointerenter',()=>{engineCards.forEach((c,n)=>c.style.opacity=n===i?'1':'.62')});
+      card.addEventListener('pointerleave',()=>engineCards.forEach(c=>c.style.opacity=''));
+      card.addEventListener('pointermove',e=>{const r=card.getBoundingClientRect();card.style.setProperty('--mx',`${e.clientX-r.left}px`);card.style.setProperty('--my',`${e.clientY-r.top}px`)});
+    });
+  }
+})();
