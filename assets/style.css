@@ -152,3 +152,84 @@ img,svg,video,iframe{max-width:100%;height:auto}.wrap{max-width:1380px}.btn{whit
 @media (max-width:380px){
   .nav .brandLogoFull{width:132px}
 }
+
+
+/* =========================================================
+   TQ MOTION SYSTEM — premium, lively, restrained
+   ========================================================= */
+:root{--motion-ease:cubic-bezier(.16,1,.3,1);--motion-spring:cubic-bezier(.22,1,.36,1)}
+body{cursor:default}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:9998;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E")}
+.motion-progress{position:fixed;top:0;left:0;width:100%;height:3px;background:var(--red);transform:scaleX(0);transform-origin:left center;z-index:1001;box-shadow:0 0 18px rgba(229,43,63,.45)}
+.cursor-glow{position:fixed;left:0;top:0;width:260px;height:260px;border-radius:50%;pointer-events:none;z-index:0;background:radial-gradient(circle,rgba(229,43,63,.10),rgba(229,43,63,0) 68%);transform:translate(-50%,-50%);opacity:0;transition:opacity .35s ease}
+.has-cursor-glow .cursor-glow{opacity:1}
+.hero,.pagehero{isolation:isolate}
+.hero .grid{animation:gridDrift 26s linear infinite}
+@keyframes gridDrift{to{background-position:44px 44px}}
+.hero::after,.pagehero::after{content:"";position:absolute;width:520px;height:520px;border:1px solid rgba(229,43,63,.10);border-radius:50%;right:-210px;bottom:-250px;animation:orbital 22s linear infinite;z-index:-1}
+.hero::before,.pagehero::before{content:"";position:absolute;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(229,43,63,.12),transparent 68%);left:-100px;top:18%;animation:floatOrb 8s ease-in-out infinite;z-index:-1}
+@keyframes orbital{to{transform:rotate(360deg)}}
+@keyframes floatOrb{50%{transform:translate(45px,-30px) scale(1.08)}}
+.visual-main{will-change:transform;transition:transform .2s var(--motion-spring),box-shadow .4s ease}
+.visual-main::before{animation:spinSlow 18s linear infinite}
+.visual-main::after{animation:spinSlow 26s linear reverse infinite}
+@keyframes spinSlow{to{transform:rotate(360deg)}}
+.floating{will-change:transform;animation:floatCard 5s ease-in-out infinite}
+.float2{animation-delay:-2.2s;animation-duration:6.5s}
+@keyframes floatCard{0%,100%{transform:translate3d(0,0,0) rotate(0deg)}50%{transform:translate3d(0,-12px,0) rotate(1deg)}}
+.track{will-change:transform}
+.marquee{position:relative}
+.marquee::before,.marquee::after{content:"";position:absolute;top:0;bottom:0;width:80px;z-index:2;pointer-events:none}
+.marquee::before{left:0;background:linear-gradient(90deg,var(--ink),transparent)}
+.marquee::after{right:0;background:linear-gradient(270deg,var(--ink),transparent)}
+.card,.program,.product,.article,.logoBox{position:relative;overflow:hidden;will-change:transform}
+.card::after,.program::after,.product::after,.article::after,.logoBox::after{content:"";position:absolute;width:170px;height:170px;border-radius:50%;background:radial-gradient(circle,rgba(229,43,63,.11),transparent 68%);right:-100px;top:-100px;transition:transform .7s var(--motion-spring),opacity .5s ease;opacity:.35;pointer-events:none}
+.card:hover::after,.program:hover::after,.product:hover::after,.article:hover::after,.logoBox:hover::after{transform:translate(-30px,30px) scale(1.25);opacity:.75}
+.card,.program,.product,.article,.logoBox{transition:transform .55s var(--motion-spring),box-shadow .55s ease,border-color .35s ease}
+.card:hover,.product:hover,.article:hover{transform:translateY(-10px) rotateX(1deg) rotateY(-1deg);box-shadow:0 30px 90px rgba(10,34,57,.14)}
+.program:hover,.logoBox:hover{transform:translateY(-9px) scale(1.015)}
+.btn{position:relative;overflow:hidden;isolation:isolate}
+.btn::after{content:"";position:absolute;inset:-80% 40%;background:rgba(255,255,255,.28);transform:rotate(22deg) translateX(-150%);transition:transform .7s var(--motion-ease);z-index:-1}
+.btn:hover::after{transform:rotate(22deg) translateX(250%)}
+.btn .arrow,.btn svg{transition:transform .35s var(--motion-spring)}
+.btn:hover svg{transform:translateX(4px)}
+.eyebrow{position:relative;display:inline-block}
+.eyebrow::after{content:"";display:block;width:0;height:1px;background:currentColor;margin-top:7px;transition:width .65s var(--motion-ease)}
+section.in-view .eyebrow::after,.pagehero.in-view .eyebrow::after{width:38px}
+.reveal{transition-property:opacity,transform,filter!important;filter:blur(5px)}
+.reveal.motion-visible{filter:blur(0)}
+.split>.reveal:nth-child(1){transition-delay:.04s!important}
+.cards .reveal:nth-child(2),.programs .reveal:nth-child(2),.productgrid .reveal:nth-child(2),.articles .reveal:nth-child(2){transition-delay:.08s!important}
+.cards .reveal:nth-child(3),.programs .reveal:nth-child(3),.productgrid .reveal:nth-child(3),.articles .reveal:nth-child(3){transition-delay:.14s!important}
+.cards .reveal:nth-child(4),.productgrid .reveal:nth-child(4){transition-delay:.20s!important}
+.number-pop{display:inline-block;transform:translateY(12px);opacity:.2;transition:transform 1s var(--motion-ease),opacity 1s ease}
+.number-pop.counted{transform:none;opacity:1}
+.section-marker{position:absolute;left:0;top:50%;width:5px;height:72px;border-radius:10px;background:var(--red);transform:translate(-50%,-50%) scaleY(0);transform-origin:center;transition:transform .9s var(--motion-ease)}
+section.in-view .section-marker{transform:translate(-50%,-50%) scaleY(1)}
+[data-parallax]{will-change:transform}
+.hero h1 .word{display:inline-block;overflow:hidden;vertical-align:bottom}
+.hero h1 .word>span{display:inline-block;transform:translateY(110%);animation:titleRise 1s var(--motion-ease) forwards}
+.hero h1 .word:nth-child(2)>span{animation-delay:.08s}
+.hero h1 .word:nth-child(3)>span{animation-delay:.16s}
+@keyframes titleRise{to{transform:none}}
+.pagehero h1{animation:pageTitleIn 1s var(--motion-ease) both}
+@keyframes pageTitleIn{from{opacity:0;transform:translateY(30px);filter:blur(8px)}to{opacity:1;transform:none;filter:none}}
+.magnetic{transition:transform .25s var(--motion-spring)}
+.nav .brandLogoFull{transition:transform .45s var(--motion-spring)}
+.nav .brandLogoFull:hover{transform:translateY(-1px) scale(1.02)}
+.nav.scrolled .brandLogoFull{transform:scale(.94)}
+.menuPanel.open{animation:menuIn .45s var(--motion-ease) both;transform-origin:top right}
+@keyframes menuIn{from{opacity:0;transform:translateY(-10px) scale(.97)}to{opacity:1;transform:none}}
+.toast.show{animation:toastIn .45s var(--motion-spring) both}
+@keyframes toastIn{from{opacity:0;transform:translateY(18px) scale(.97)}to{opacity:1;transform:none}}
+.footer .brandLogoFull{transition:transform .5s var(--motion-spring)}
+.footer .brandLogoFull:hover{transform:translateY(-3px)}
+@media (max-width:1000px){
+  .cursor-glow{display:none}.hero::after,.pagehero::after{width:380px;height:380px}.card:hover,.product:hover,.article:hover{transform:translateY(-6px)}
+}
+@media (max-width:650px){
+  body::before{opacity:.025}.hero::after,.pagehero::after{width:260px;height:260px;right:-150px;bottom:-120px}.hero::before{width:190px;height:190px}.floating{animation-duration:6.5s}.marquee::before,.marquee::after{width:35px}.btn:hover{transform:none}.card:hover,.program:hover,.product:hover,.article:hover,.logoBox:hover{transform:translateY(-4px)}
+}
+@media (prefers-reduced-motion:reduce){
+  body::before,.hero .grid,.hero::after,.pagehero::after,.hero::before,.visual-main::before,.visual-main::after,.floating,.track,.hero h1 .word>span,.pagehero h1{animation:none!important}.cursor-glow{display:none}.card,.program,.product,.article,.logoBox,.btn,.nav .brandLogoFull{transition:none!important}.reveal{filter:none!important}
+}
