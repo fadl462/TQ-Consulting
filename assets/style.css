@@ -365,3 +365,40 @@ section:nth-of-type(even){background:linear-gradient(180deg,#f8fafb,#fff);}
 @media(max-width:1000px){.arch-head{grid-template-columns:1fr}.arch-intro{justify-self:start}.capability-stage{grid-template-columns:1fr}.cap-orbit{min-height:350px}.cap-copy{padding:42px}.mental-grid{grid-template-columns:1fr;gap:35px}.mental-panel{grid-template-columns:1fr}.mental-visual{height:250px}.cap-tabs{grid-template-columns:1fr 1fr}.mental-tabs{grid-template-columns:1fr 1fr}}
 @media(max-width:650px){.brandLogoFull{width:124px}.hero:before{width:380px;height:380px}.arch-head{gap:20px}.arch-intro{min-width:0}.capability-stage{border-radius:28px}.cap-copy{padding:30px 24px}.cap-copy h3{font-size:40px}.cap-copy p{font-size:14px}.cap-orbit{min-height:280px}.ring-a{width:240px;height:240px}.ring-b{width:160px;height:160px}.orbit-core{width:105px;height:105px}.orbit-core span{font-size:38px}.cap-tabs,.mental-tabs{grid-template-columns:1fr}.cap-tab{min-height:auto;padding:17px}.mental-panel{padding:20px;border-radius:25px}.mental-detail h3{font-size:35px}.mental-index{margin-top:20px}.mental-visual{height:220px}.mental-rings i{inset:8%}.n1{right:15%}.n2{left:15%}.n3{left:8%}}
 @media(prefers-reduced-motion:reduce){.hero:before,.hero:after,.grid,.floating,.orbit-ring,.mental-rings i{animation:none!important}.cap-tab,.mental-tab{transition:none!important}}
+
+
+/* V9 — viewport polish + refined section navigation */
+.section-rail{right:18px;top:50%;transform:translateY(-50%);width:46px;padding:14px 10px;gap:13px;border-radius:24px;background:rgba(255,255,255,.78);border:1px solid rgba(7,28,47,.10);backdrop-filter:blur(20px);box-shadow:0 18px 55px rgba(7,28,47,.12);}
+.section-rail a{position:relative;display:flex;align-items:center;justify-content:center;min-height:16px;width:24px;margin:auto;color:var(--muted);}
+.section-rail .rail-label{position:absolute;right:31px;top:50%;transform:translateY(-50%) translateX(5px);max-width:none;width:max-content;padding:7px 10px;border-radius:999px;background:rgba(7,28,47,.92);color:#fff;letter-spacing:.12em;font-size:8px;opacity:0;pointer-events:none;transition:opacity .25s var(--ease),transform .25s var(--ease);white-space:nowrap;box-shadow:0 10px 25px rgba(7,28,47,.16)}
+.section-rail a.active .rail-label{opacity:1;transform:translateY(-50%) translateX(0)}
+.section-rail:hover .rail-label{max-width:none;opacity:0}
+.section-rail:hover a.active .rail-label{opacity:1}
+.rail-dot{width:8px;height:8px;border:1px solid #9aabb8;border-radius:50%;background:transparent;display:block;transition:transform .3s var(--ease),background .25s,border-color .25s,box-shadow .25s}
+.section-rail a:hover .rail-dot{transform:scale(1.35);border-color:var(--ink)}
+.section-rail a.active .rail-dot{background:var(--red);border-color:var(--red);box-shadow:0 0 0 5px rgba(229,43,63,.10);transform:scale(1.05)}
+
+/* Keep the first viewport composed on common laptop widths. */
+@media(min-width:1001px) and (max-width:1450px){
+  .wrap{width:min(1280px,calc(100% - 48px));}
+  .hero{min-height:820px;padding-top:154px;padding-bottom:72px;}
+  .hero-grid{grid-template-columns:1fr .9fr;gap:42px;}
+  .hero h1{font-size:clamp(58px,6.4vw,92px);}
+  .hero p{font-size:17px;max-width:600px;}
+  .visual-main{height:600px;border-radius:34px;}
+  .floating{padding:15px;border-radius:18px;}
+  .float1{left:-18px;width:205px;}
+  .float2{right:-10px;top:58px;width:190px;}
+}
+
+/* The rail is a supplement, never a competing visual layer. */
+@media(max-width:1180px){.section-rail{display:none}}
+@media(max-width:650px){
+  .section-rail{display:none}
+  .nav{padding:8px 0}
+  .navin{padding:6px 8px 6px 12px}
+  .brandLogoFull{width:128px}
+  .hero-grid{gap:34px}
+  .visual{width:100%;}
+  .visual-main{width:100%;}
+}

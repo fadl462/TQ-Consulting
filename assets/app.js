@@ -96,7 +96,7 @@
     const sections=qsa('main > section');
     if(sections.length>2){
       const rail=document.createElement('nav'); rail.className='section-rail'; rail.setAttribute('aria-label','Page sections');
-      sections.forEach((sec,i)=>{const a=document.createElement('a');a.href=`#section-${i+1}`;a.dataset.index=i;const dot=document.createElement('span');dot.className='rail-dot';const label=document.createElement('span');label.className='rail-label';label.textContent=sec.querySelector('.eyebrow')?.textContent?.split('—')[1]?.trim()||`Section ${i+1}`;a.append(dot,label);sec.id=`section-${i+1}`;rail.append(a);});
+      const railNames=['Overview','TQ Architecture','Mental Toughness','Signature Learning','Credibility','TQ Store','Start a Conversation']; sections.forEach((sec,i)=>{const a=document.createElement('a');a.href=`#section-${i+1}`;a.dataset.index=i;const dot=document.createElement('span');dot.className='rail-dot';const label=document.createElement('span');label.className='rail-label';label.textContent=railNames[i]||`Section ${i+1}`;a.append(dot,label);sec.id=`section-${i+1}`;rail.append(a);});
       document.body.append(rail);
       const railLinks=qsa('.section-rail a');
       const roi=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){railLinks.forEach(a=>a.classList.toggle('active',a.dataset.index===String(sections.indexOf(e.target))))}}),{threshold:.3});sections.forEach(s=>roi.observe(s));
