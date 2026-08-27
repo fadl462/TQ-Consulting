@@ -402,3 +402,23 @@ section:nth-of-type(even){background:linear-gradient(180deg,#f8fafb,#fff);}
   .visual{width:100%;}
   .visual-main{width:100%;}
 }
+
+
+/* V10 navigation refinement — more air, clearer rhythm, stronger premium feel */
+.navin{gap:28px}
+.links{gap:34px;flex:1;justify-content:center;min-width:0}
+.links a{position:relative;display:inline-flex;align-items:center;padding:10px 2px;font-size:13px;letter-spacing:.01em;white-space:nowrap;opacity:.82;transition:color .25s ease,opacity .25s ease}
+.links a::after{content:"";position:absolute;left:2px;right:2px;bottom:2px;height:2px;border-radius:99px;background:var(--red);transform:scaleX(0);transform-origin:center;transition:transform .3s var(--motion-ease)}
+.links a:hover,.links a:focus-visible{opacity:1;color:var(--ink)}
+.links a:hover::after,.links a:focus-visible::after{transform:scaleX(1)}
+.actions{gap:12px;flex:0 0 auto}
+.actions .btn{padding:13px 20px}
+@media (max-width:1200px){
+  .navin{gap:18px}
+  .links{gap:24px}
+  .links a{font-size:12px}
+  .actions .btn{padding:12px 16px}
+}
+@media (max-width:1100px){
+  .links{display:none}
+}
