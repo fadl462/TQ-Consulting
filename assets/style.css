@@ -729,3 +729,47 @@ main>section:not(:first-child):before{content:"";position:absolute;left:0;top:-1
   .solutions-page .cap-tabs{grid-template-columns:1fr}
   .solutions-page .cap-stage{min-height:380px}
 }
+
+/* =========================================================
+   V18 — SOLUTIONS HERO COMPOSITION / VIEWPORT REFINEMENT
+   Calibrated for premium desktop viewing: the first viewport
+   should present the headline, visual, CTAs and proof together.
+   ========================================================= */
+@media (min-width:1201px){
+  .solutions-page .sol-hero{padding:128px 0 48px;}
+  .solutions-page .sol-hero-grid{grid-template-columns:minmax(0,.93fr) minmax(560px,1.07fr);gap:42px;}
+  .solutions-page .sol-copy{max-width:690px;padding-top:10px;}
+  .solutions-page .sol-copy h1{font-size:clamp(56px,5.7vw,86px);line-height:.9;max-width:700px;margin:17px 0 18px;}
+  .solutions-page .sol-copy .lead{font-size:15px;max-width:575px;}
+  .solutions-page .heroBtns{margin-top:22px;}
+  .solutions-page .sol-proof{margin-top:29px;gap:34px;}
+  .solutions-page .sol-proof b{font-size:27px;}
+  .solutions-page .sol-visual{height:500px;min-height:500px;}
+  .solutions-page .sol-visual-main{inset:13px 6px 13px 20px;border-radius:34px;padding:27px;}
+  .solutions-page .sv-core{left:44px;bottom:38px;max-width:430px;}
+  .solutions-page .sv-core h2{font-size:clamp(38px,3.3vw,55px);}
+  .solutions-page .chip-a{right:12px;top:50px;}
+  .solutions-page .chip-b{left:4px;top:205px;}
+  .solutions-page .chip-c{right:30px;bottom:25px;}
+}
+
+@media (min-width:1001px) and (max-width:1200px){
+  .solutions-page .sol-hero{padding:122px 0 48px;}
+  .solutions-page .sol-hero-grid{grid-template-columns:minmax(0,1fr) minmax(470px,.92fr);gap:28px;}
+  .solutions-page .sol-copy h1{font-size:clamp(52px,6.1vw,76px);}
+  .solutions-page .sol-visual{height:480px;min-height:480px;}
+  .solutions-page .sol-visual-main{inset:12px 4px 12px 14px;}
+}
+
+/* Keep floating chips inside the visual stage on desktop. */
+@media (min-width:1001px){
+  .solutions-page .sv-chip{z-index:5;}
+  .solutions-page .chip-a{right:14px;}
+  .solutions-page .chip-b{left:8px;}
+  .solutions-page .chip-c{right:26px;}
+}
+
+/* Avoid the section rail competing with the hero artwork. */
+@media (min-width:1001px){
+  .solutions-page .section-nav,.solutions-page .side-nav,.solutions-page .page-dots{z-index:70;}
+}
