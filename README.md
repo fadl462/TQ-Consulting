@@ -1,3 +1,3 @@
-# TQ Consulting — V16 Solutions Layout & UX Polish
+# TQ Consulting V17 — Solutions Visual & UX Refinement
 
-Built from V15. This release specifically addresses the Solutions page shown in the latest review: hero visual visibility, excessive dead space, content hierarchy, responsive composition, and floating-chip positioning. Existing TQ branding, logo assets, content, and motion system are retained.
+Built from V16 master. This version refines the Solutions page composition, reduces dead space, strengthens the interactive capability architecture, improves responsive layouts, and makes the section navigator page-aware. Existing TQ brand assets and motion system are preserved.

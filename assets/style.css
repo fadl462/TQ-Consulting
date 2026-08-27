@@ -622,3 +622,110 @@ main>section:not(:first-child):before{content:"";position:absolute;left:0;top:-1
   .solutions-page .sv-core{left:24px;right:20px;bottom:30px}
   .solutions-page .sv-core h2{font-size:30px}
 }
+
+/* =========================================================
+   V17 — SOLUTIONS VISUAL / UX REFINEMENT
+   Focus: stronger composition, less empty space, clearer
+   interactive hierarchy, and premium responsive behaviour.
+   ========================================================= */
+.solutions-page .sol-hero{padding:132px 0 58px;min-height:0}
+.solutions-page .sol-hero-grid{grid-template-columns:minmax(0,.88fr) minmax(500px,1.12fr);gap:52px}
+.solutions-page .sol-copy h1{font-size:clamp(56px,6.1vw,94px);max-width:760px;margin:18px 0 20px}
+.solutions-page .sol-copy .lead{max-width:600px;font-size:16px;line-height:1.7}
+.solutions-page .heroBtns{margin-top:25px}
+.solutions-page .sol-proof{margin-top:35px;gap:38px}
+.solutions-page .sol-proof b{font-size:29px}
+.solutions-page .sol-visual{height:540px;min-height:540px;transform:translateY(-2px)}
+.solutions-page .sol-visual-main{inset:18px 8px 18px 28px;border-radius:34px}
+.solutions-page .sv-core{left:48px;bottom:44px;max-width:440px}
+.solutions-page .sv-core h2{font-size:clamp(40px,3.7vw,61px)}
+.solutions-page .sv-chip{padding:12px 15px;border-radius:15px}
+.solutions-page .chip-a{right:10px;top:64px}
+.solutions-page .chip-b{left:0;top:230px}
+.solutions-page .chip-c{right:28px;bottom:34px}
+
+.solutions-page .sol-architecture{padding:92px 0 104px}
+.solutions-page .sol-architecture .section-head{grid-template-columns:1.05fr .95fr;gap:55px;margin-bottom:30px}
+.solutions-page .sol-architecture .h2{font-size:clamp(48px,5.2vw,76px);line-height:.92}
+.solutions-page .cap-layout{grid-template-columns:minmax(0,.48fr) minmax(0,1.52fr);gap:14px;align-items:stretch}
+.solutions-page .cap-tabs{grid-template-columns:1fr 1fr;gap:8px}
+.solutions-page .cap-tab{min-height:142px;padding:18px;border-radius:18px;grid-template-columns:42px 1fr;align-content:start}
+.solutions-page .cap-tab span{font-size:25px}
+.solutions-page .cap-tab strong{font-size:15px;line-height:1.2}
+.solutions-page .cap-tab small{font-size:10px;line-height:1.4}
+.solutions-page .cap-tab.active{transform:none;box-shadow:0 20px 50px rgba(7,28,47,.16)}
+.solutions-page .cap-stage{min-height:300px;height:100%;border-radius:26px;padding:34px}
+.solutions-page .cap-stage-content{max-width:520px}
+.solutions-page .cap-stage-num{font-size:68px;margin:10px 0 -8px}
+.solutions-page .cap-stage h3{font-size:clamp(38px,3.7vw,58px);margin-bottom:12px}
+.solutions-page .cap-stage p{font-size:13px;line-height:1.55;max-width:480px}
+.solutions-page .cap-tags{margin:18px 0}
+.solutions-page .cap-stage-ring.ring1{width:390px;height:390px;right:-175px;top:-115px}
+.solutions-page .cap-stage-ring.ring2{width:520px;height:520px;left:-310px;bottom:-360px}
+
+.solutions-page .sol-technology{padding:96px 0 100px}
+.solutions-page .tech-head{grid-template-columns:1.2fr .8fr;gap:65px}
+.solutions-page .tech-head .h2{font-size:clamp(48px,5vw,72px);line-height:.93}
+.solutions-page .tech-grid{margin-top:38px}
+.solutions-page .tech-item{padding:19px 0;min-height:66px}
+.solutions-page .tech-item.active{padding:22px 0}
+
+.solutions-page .sol-outcomes{padding:92px 0 96px}
+.solutions-page .sol-outcomes .section-head{margin-bottom:30px}
+.solutions-page .outcome-grid{gap:10px}
+.solutions-page .outcome-grid article{min-height:235px;padding:22px;border-radius:21px}
+.solutions-page .outcome-grid h3{font-size:18px;margin:20px 0 8px}
+.solutions-page .outcome-grid p{font-size:12px;line-height:1.5}
+
+.solutions-page .sol-cta{padding:78px 0 92px}
+.solutions-page .sol-cta-inner{grid-template-columns:.95fr 1.05fr;gap:55px}
+.solutions-page .sol-cta-card{padding:32px;border-radius:26px}
+
+/* A small interactive cue keeps the architecture section discoverable. */
+.solutions-page .section-head .lead:after{content:'Click a capability to explore →';display:block;margin-top:18px;font:800 10px 'Manrope';letter-spacing:.1em;text-transform:uppercase;color:var(--red)}
+
+@media(max-width:1200px){
+  .solutions-page .sol-hero-grid{grid-template-columns:minmax(0,1fr) minmax(420px,.95fr);gap:32px}
+  .solutions-page .sol-visual{height:500px;min-height:500px}
+  .solutions-page .sol-copy h1{font-size:clamp(52px,6.4vw,82px)}
+}
+@media(max-width:1000px){
+  .solutions-page .sol-hero{padding:124px 0 58px}
+  .solutions-page .sol-hero-grid{grid-template-columns:1fr;gap:28px}
+  .solutions-page .sol-copy{max-width:800px}
+  .solutions-page .sol-visual{height:500px;min-height:500px;max-width:780px;margin:0 auto}
+  .solutions-page .sol-architecture .section-head,.solutions-page .tech-head,.solutions-page .sol-cta-inner{grid-template-columns:1fr;gap:24px}
+  .solutions-page .cap-layout{grid-template-columns:1fr}
+  .solutions-page .cap-tabs{grid-template-columns:repeat(4,1fr)}
+  .solutions-page .cap-tab{min-height:120px}
+  .solutions-page .cap-stage{min-height:400px}
+}
+@media(max-width:650px){
+  .solutions-page .sol-hero{padding:106px 0 46px}
+  .solutions-page .sol-copy h1{font-size:clamp(43px,12.8vw,57px);line-height:.92}
+  .solutions-page .sol-copy .lead{font-size:14px}
+  .solutions-page .sol-proof{gap:24px;margin-top:28px}
+  .solutions-page .sol-visual{height:410px;min-height:410px}
+  .solutions-page .sol-visual-main{inset:8px 0;padding:20px;border-radius:25px}
+  .solutions-page .sv-core{left:25px;right:20px;bottom:28px}
+  .solutions-page .sv-core h2{font-size:34px}
+  .solutions-page .sv-chip{font-size:8px;padding:9px 10px}
+  .solutions-page .sv-chip strong{font-size:13px}
+  .solutions-page .chip-a{right:6px;top:38px}
+  .solutions-page .chip-b{left:6px;top:165px}
+  .solutions-page .chip-c{right:12px;bottom:20px}
+  .solutions-page .sol-architecture,.solutions-page .sol-outcomes,.solutions-page .sol-technology{padding-top:70px;padding-bottom:72px}
+  .solutions-page .sol-architecture .h2,.solutions-page .tech-head .h2{font-size:clamp(43px,12vw,57px)}
+  .solutions-page .cap-tabs{grid-template-columns:1fr 1fr}
+  .solutions-page .cap-tab{min-height:100px;padding:15px}
+  .solutions-page .cap-stage{min-height:410px;padding:25px}
+  .solutions-page .cap-stage h3{font-size:38px}
+  .solutions-page .outcome-grid{grid-template-columns:1fr}
+  .solutions-page .sol-cta-inner{gap:30px}
+}
+@media(max-width:420px){
+  .solutions-page .sol-visual{height:375px;min-height:375px}
+  .solutions-page .sv-core h2{font-size:29px}
+  .solutions-page .cap-tabs{grid-template-columns:1fr}
+  .solutions-page .cap-stage{min-height:380px}
+}
