@@ -90,4 +90,40 @@
 <footer class="footer"><div class="wrap"><div class="footgrid"><div><div class="brand"><img class="brandLogo brandLogoFull" src="assets/tq-logo-inverse.png" alt="TQ Consulting"></div><p style="max-width:420px;margin-top:18px">Research-led consulting, learning, coaching and learning technology solutions for people and organisations navigating change.</p></div><div><h4>Explore</h4><a href="solutions.html">Solutions</a><a href="learning.html">Learning</a><a href="certifications.html">Certifications</a><a href="store.html">Store</a></div><div><h4>Company</h4><a href="about.html">About</a><a href="insights.html">Insights</a><a href="contact.html">Contact</a><a href="https://www.tqconsulting.co/accreditation" target="_blank">Accreditations</a></div><div><h4>Contact</h4><p>Abu Dhabi, United Arab Emirates</p><p>+971 2 666 7153</p><p>info@tqconsulting.co</p></div></div><div class="copyright"><span>© 2026 TQ Consulting. All rights reserved.</span><span>ISO 9001:2015 · ACTVET · GInI</span></div></div></footer><div class="toast"></div><script src="assets/app.js"></script><script>
 document.querySelectorAll('.domain').forEach((item)=>{item.addEventListener('click',()=>{document.querySelectorAll('.domain').forEach(x=>{if(x!==item)x.classList.remove('open')});item.classList.toggle('open')})});
 document.querySelectorAll('.learning-chip').forEach((chip)=>{chip.addEventListener('mouseenter',()=>chip.style.transform='translateY(-5px)');chip.addEventListener('mouseleave',()=>chip.style.transform='');});
-</script></body></html>
+</script><style>
+/* V27 — Learning interaction polish */
+.learning-page .learning-stage{perspective:1200px}
+.learning-page .learning-panel{transform-style:preserve-3d;transition:transform .8s cubic-bezier(.16,1,.3,1),box-shadow .8s cubic-bezier(.16,1,.3,1)}
+.learning-page .learning-stage:hover .learning-panel{transform:rotateX(1.5deg) rotateY(-1.5deg) translateY(-5px);box-shadow:0 34px 90px rgba(10,34,57,.18)}
+.learning-page .learning-chip{transition:transform .45s cubic-bezier(.16,1,.3,1),box-shadow .45s,background .3s}
+.learning-page .learning-chip:hover{box-shadow:0 24px 55px rgba(10,34,57,.2);background:#fff}
+.learning-page .learning-program{isolation:isolate}
+.learning-page .learning-program:before{content:"";position:absolute;inset:0;background:radial-gradient(180px circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.18),transparent 62%);opacity:0;transition:opacity .45s;pointer-events:none;z-index:1}
+.learning-page .learning-program:hover:before{opacity:1}
+.learning-page .learning-program h3,.learning-page .learning-program p,.learning-page .learning-program a,.learning-page .learning-program .pill{transition:transform .45s cubic-bezier(.16,1,.3,1)}
+.learning-page .learning-program:hover h3{transform:translateY(-3px)}
+.learning-page .learning-program:hover a{transform:translateX(4px)}
+.learning-page .domain{position:relative;transition:padding .35s ease,background .35s ease}
+.learning-page .domain:before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:#ef4455;transform:scaleY(0);transform-origin:center;transition:transform .35s ease}
+.learning-page .domain:hover{background:rgba(255,255,255,.025);padding-left:10px}
+.learning-page .domain:hover:before,.learning-page .domain.open:before{transform:scaleY(1)}
+.learning-page .delivery-card{position:relative;overflow:hidden}
+.learning-page .delivery-card:after{content:"";position:absolute;width:150px;height:150px;border:1px solid rgba(10,34,57,.07);border-radius:50%;right:-85px;bottom:-90px;transition:transform .6s cubic-bezier(.16,1,.3,1)}
+.learning-page .delivery-card:hover:after{transform:scale(1.35)}
+.learning-page .learning-cta-box{position:relative;overflow:hidden}
+.learning-page .learning-cta-box:after{content:"";position:absolute;width:420px;height:420px;border:1px solid rgba(255,255,255,.08);border-radius:50%;right:-250px;bottom:-260px;animation:learningCtaOrbit 16s linear infinite;pointer-events:none}
+@keyframes learningCtaOrbit{to{transform:rotate(360deg)}}
+@media(max-width:650px){.learning-page .learning-stage:hover .learning-panel{transform:none}.learning-page .learning-program:before{display:none}.learning-page .domain:hover{padding-left:0}.learning-page .learning-cta-box:after{animation:none}}
+@media(prefers-reduced-motion:reduce){.learning-page .learning-panel,.learning-page .learning-chip,.learning-page .learning-program:before,.learning-page .domain,.learning-page .domain:before,.learning-page .delivery-card:after,.learning-page .learning-cta-box:after{transition:none;animation:none}}
+</style>
+<script>
+(()=>{
+ const fine=matchMedia('(hover:hover) and (pointer:fine)').matches;
+ const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+ if(fine&&!reduce){
+   document.querySelectorAll('.learning-program').forEach(card=>card.addEventListener('pointermove',e=>{const r=card.getBoundingClientRect();card.style.setProperty('--mx',(e.clientX-r.left)+'px');card.style.setProperty('--my',(e.clientY-r.top)+'px')}));
+ }
+})();
+</script>
+
+</body></html>
