@@ -1068,3 +1068,35 @@ main>section:not(:first-child):before{content:"";position:absolute;left:0;top:-1
     bottom:24px;
   }
 }
+
+
+/* V36 — About hero hard reset: eliminate the persistent top void. */
+@media (min-width:1001px){
+  .about-hero.pagehero{
+    min-height:0 !important;
+    height:auto !important;
+    padding-top:118px !important;
+    padding-bottom:62px !important;
+  }
+  .about-hero.pagehero .about-hero-grid{
+    position:relative !important;
+    top:0 !important;
+    margin-top:0 !important;
+    padding-top:0 !important;
+    transform:none !important;
+    align-items:start !important;
+  }
+  .about-hero.pagehero .about-hero-copy{
+    position:relative !important;
+    top:0 !important;
+    margin-top:0 !important;
+    padding-top:8px !important;
+    transform:none !important;
+  }
+  .about-hero.pagehero .about-hero-art{
+    position:relative !important;
+    top:0 !important;
+    margin-top:0 !important;
+    transform:none !important;
+  }
+}
