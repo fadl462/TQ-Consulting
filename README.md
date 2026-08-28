@@ -1,18 +1,3 @@
-# TQ Consulting V25 — Learning Page Alignment & Premium Density
+TQ Consulting — V35 About Hero Vertical Compression
 
-Targeted refinement of the Learning experience based on the latest desktop screenshot.
-
-Key changes:
-- Rebalanced Learning hero proportions and vertical density.
-- Repositioned floating learning chips into dedicated safe zones.
-- Prevented hero chips from covering the main learning-system typography.
-- Refined programme section spacing and card scale.
-- Tightened dark learning-domains and delivery sections.
-- Added responsive desktop/tablet/mobile calibration.
-- Preserved TQ branding, logos, motion system and reduced-motion support.
-
-
-V33 — About page hero alignment polish: removed vertical-centering drift so hero copy and visual begin near the top of the viewport and no large blank band appears beneath the navigation.
-
-
-V34 — About visibility fail-safe: corrected the reveal layer so hero and section content cannot remain hidden when the IntersectionObserver is delayed or unavailable.
+Fix: removed the oversized blank vertical space between the fixed navigation and the About hero content. The desktop About hero now uses a tighter height/padding while preserving the existing visual design and responsive breakpoints.
