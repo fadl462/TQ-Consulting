@@ -7,7 +7,9 @@
 <link rel="stylesheet" href="assets/style.css">
 <style>
 /* V28 — Certification Experience */
-.cert-page{overflow:hidden;background:#fbfcfd}
+/* V29 — document scrolling guard */
+.cert-page{min-height:100%;overflow-x:hidden;overflow-y:auto;}
+.cert-page{overflow-x:hidden;overflow-y:auto;background:#fbfcfd}
 .cert-hero{min-height:760px;padding:176px 0 84px;position:relative;overflow:hidden;background:radial-gradient(circle at 72% 25%,rgba(229,43,63,.16),transparent 27%),radial-gradient(circle at 15% 85%,rgba(71,127,166,.12),transparent 30%),linear-gradient(135deg,#faf8f3,#f7fafc 68%,#eef3f6)}
 .cert-hero .wrap{position:relative;z-index:2}.cert-hero-grid{display:grid;grid-template-columns:1fr .9fr;gap:70px;align-items:center}
 .cert-kicker{font:800 11px/1 'Manrope';letter-spacing:.18em;text-transform:uppercase;color:var(--red);display:inline-flex;align-items:center;gap:10px}.cert-kicker:before{content:"";width:38px;height:1px;background:currentColor}
