@@ -1,5 +1,13 @@
-# TQ Consulting — V22
+# TQ Consulting V24 — Learning Experience
 
-Solutions-page collision and alignment cleanup. The pointer-following red atmosphere is disabled at the JavaScript source on the Solutions page, eliminating the large red circle that was covering the architecture heading and capability selector. A restrained static orbital detail preserves visual life without interfering with content.
+Premium Learning & Development page refinement built on the V23 master.
 
-V23 refinement: repositioned Solutions hero floating chips into dedicated safe zones so they never overlap the main editorial headline inside the hero visual.
+Highlights:
+- Editorial learning hero with interactive learning pathway visual
+- Signature programme cards based on TQ's current learning/product ecosystem
+- Expandable learning domains
+- Delivery model cards
+- Premium conversion CTA
+- Responsive desktop/tablet/mobile layouts
+- Reduced-motion support
+- Existing TQ logo and brand assets preserved
