@@ -10,3 +10,6 @@ Key changes:
 - Tightened dark learning-domains and delivery sections.
 - Added responsive desktop/tablet/mobile calibration.
 - Preserved TQ branding, logos, motion system and reduced-motion support.
+
+
+V33 — About page hero alignment polish: removed vertical-centering drift so hero copy and visual begin near the top of the viewport and no large blank band appears beneath the navigation.
