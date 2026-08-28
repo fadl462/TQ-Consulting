@@ -1,13 +1,12 @@
-# TQ Consulting V24 — Learning Experience
+# TQ Consulting V25 — Learning Page Alignment & Premium Density
 
-Premium Learning & Development page refinement built on the V23 master.
+Targeted refinement of the Learning experience based on the latest desktop screenshot.
 
-Highlights:
-- Editorial learning hero with interactive learning pathway visual
-- Signature programme cards based on TQ's current learning/product ecosystem
-- Expandable learning domains
-- Delivery model cards
-- Premium conversion CTA
-- Responsive desktop/tablet/mobile layouts
-- Reduced-motion support
-- Existing TQ logo and brand assets preserved
+Key changes:
+- Rebalanced Learning hero proportions and vertical density.
+- Repositioned floating learning chips into dedicated safe zones.
+- Prevented hero chips from covering the main learning-system typography.
+- Refined programme section spacing and card scale.
+- Tightened dark learning-domains and delivery sections.
+- Added responsive desktop/tablet/mobile calibration.
+- Preserved TQ branding, logos, motion system and reduced-motion support.
