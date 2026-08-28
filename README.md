@@ -1,9 +1,3 @@
-TQ Consulting V20 — Solutions alignment and overlap control
+# TQ Consulting — V22
 
-# TQ Consulting — V18
-
-Premium responsive multi-page website for TQ Consulting.
-
-V18 refines the Solutions-page hero composition for desktop/tablet viewport balance, keeping the editorial headline, CTAs, proof points and interactive visual legible together in the first viewport while preserving the V17 interaction system.
-
-Pages: Home, Solutions, Learning, Certifications, Store, About, Insights, Contact.
+Solutions-page collision and alignment cleanup. The pointer-following red atmosphere is disabled at the JavaScript source on the Solutions page, eliminating the large red circle that was covering the architecture heading and capability selector. A restrained static orbital detail preserves visual life without interfering with content.

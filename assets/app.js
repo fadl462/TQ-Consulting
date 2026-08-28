@@ -157,11 +157,13 @@
   const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
   const q=(s,c=document)=>c.querySelector(s), qa=(s,c=document)=>[...c.querySelectorAll(s)];
   if(!reduce){
-    // Cursor atmosphere: subtle, never a primary interaction.
-    const glow=document.createElement('div'); glow.className='v12-cursor-glow'; document.body.append(glow);
+    // Cursor atmosphere is intentionally disabled on Solutions: the architecture is an interactive editorial zone.
+    if(!document.body.classList.contains('solutions-page')){
+      const glow=document.createElement('div'); glow.className='v12-cursor-glow'; document.body.append(glow);
     let gx=0,gy=0,tx=0,ty=0;
     addEventListener('pointermove',e=>{tx=e.clientX;ty=e.clientY},{passive:true});
     const move=()=>{gx+=(tx-gx)*.12;gy+=(ty-gy)*.12;glow.style.left=gx+'px';glow.style.top=gy+'px';requestAnimationFrame(move)};move();
+    }
 
     // Viewport-driven reveal with deliberate stagger.
     const revealables=qa('main section .section-kicker, main section h1, main section h2, main section .lead, main section .about-art-shell, main section .story-stat, main section .engine-card, main section .principle-stack article, main section .logoBox, main section .cta-card');
