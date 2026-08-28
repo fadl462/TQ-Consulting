@@ -13,3 +13,6 @@ Key changes:
 
 
 V33 — About page hero alignment polish: removed vertical-centering drift so hero copy and visual begin near the top of the viewport and no large blank band appears beneath the navigation.
+
+
+V34 — About visibility fail-safe: corrected the reveal layer so hero and section content cannot remain hidden when the IntersectionObserver is delayed or unavailable.

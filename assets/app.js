@@ -167,9 +167,20 @@
 
     // Viewport-driven reveal with deliberate stagger.
     const revealables=qa('main section .section-kicker, main section h1, main section h2, main section .lead, main section .about-art-shell, main section .story-stat, main section .engine-card, main section .principle-stack article, main section .logoBox, main section .cta-card');
-    revealables.forEach((el,i)=>{if(!el.classList.contains('reveal')&&!el.classList.contains('v12-reveal')){el.classList.add('v12-reveal');el.dataset.v12Delay=String((i%5)+1)}});
-    const rio=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('is-visible');rio.unobserve(e.target)}}),{threshold:.08,rootMargin:'0px 0px -8% 0px'});
-    revealables.forEach(el=>rio.observe(el));
+    revealables.forEach((el,i)=>{
+      if(!el.classList.contains('reveal')&&!el.classList.contains('v12-reveal')){
+        el.classList.add('v12-reveal');
+        el.dataset.v12Delay=String((i%5)+1);
+      }
+      // Keep the content visible until the observer positively confirms the element is ready.
+      el.classList.add('is-visible');
+    });
+    if('IntersectionObserver' in window){
+      const rio=new IntersectionObserver(entries=>entries.forEach(e=>{
+        if(e.isIntersecting){e.target.classList.add('is-visible');rio.unobserve(e.target)}
+      }),{threshold:.01,rootMargin:'0px 0px 0px 0px'});
+      revealables.forEach(el=>rio.observe(el));
+    }
 
     // Magnetic-ish nav links, kept restrained.
     if(matchMedia('(hover:hover) and (pointer:fine)').matches){
