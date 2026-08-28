@@ -982,3 +982,33 @@ main>section:not(:first-child):before{content:"";position:absolute;left:0;top:-1
 @media(max-width:1000px){.solutions-page .sol-architecture:after{width:360px;height:360px;right:-230px;bottom:-220px}}
 @media(max-width:650px){.solutions-page .sol-architecture:after{width:260px;height:260px;right:-180px;bottom:-160px}}
 @media(prefers-reduced-motion:reduce){.solutions-page .sol-architecture:after{animation:none}}
+
+/* V23 — floating hero chip collision protection */
+.solutions-page .sol-visual-main .sv-chip { pointer-events:none; }
+@media (min-width:1201px){
+  .solutions-page .sol-visual-main .chip-a{right:28px;top:56px;}
+  .solutions-page .sol-visual-main .chip-b{left:30px;top:56px;}
+  .solutions-page .sol-visual-main .chip-c{right:30px;bottom:28px;}
+}
+@media (min-width:1001px) and (max-width:1200px){
+  .solutions-page .sol-visual-main .chip-a{right:22px;top:48px;}
+  .solutions-page .sol-visual-main .chip-b{left:22px;top:48px;}
+  .solutions-page .sol-visual-main .chip-c{right:22px;bottom:22px;}
+}
+@media (max-width:1000px){
+  .solutions-page .sol-visual-main .chip-a{right:18px;top:38px;}
+  .solutions-page .sol-visual-main .chip-b{left:18px;top:38px;}
+  .solutions-page .sol-visual-main .chip-c{right:18px;bottom:18px;}
+}
+@media (max-width:650px){
+  .solutions-page .sol-visual-main .chip-a{right:12px;top:26px;}
+  .solutions-page .sol-visual-main .chip-b{left:12px;top:26px;}
+  .solutions-page .sol-visual-main .chip-c{right:12px;bottom:14px;}
+}
+@media (max-width:420px){
+  .solutions-page .sol-visual-main .sv-chip{padding:8px 10px;border-radius:12px;}
+  .solutions-page .sol-visual-main .sv-chip strong{font-size:12px;}
+  .solutions-page .sol-visual-main .chip-a{right:10px;top:22px;}
+  .solutions-page .sol-visual-main .chip-b{left:10px;top:22px;}
+  .solutions-page .sol-visual-main .chip-c{right:10px;bottom:10px;}
+}
